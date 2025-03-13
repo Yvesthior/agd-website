@@ -316,14 +316,12 @@ const countries: Record<string, CountryInfo> = {
   },
 };
 
-export default async function CountryPage({
+export default function CountryPage({
   params,
 }: {
   params: { country: string };
 }) {
-  const { country } = await params;
-  const actualContry = country;
-  const countryInfo = countries[actualContry];
+  const countryInfo = countries[params.country];
 
   if (!countryInfo) {
     return (
@@ -351,7 +349,7 @@ export default async function CountryPage({
         className="h-[50vh] md:h-[60vh]"
       />
       {/* Country Selector */}
-      <CountrySelector actual={actualContry} />
+      <CountrySelector />
 
       {/* Country Information */}
       <section className="w-full py-12 md:py-24 bg-white">

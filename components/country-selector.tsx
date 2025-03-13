@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -24,15 +24,11 @@ const countries: Country[] = [
   { id: "togo", name: "Togo", flag: "/images/drapeauTogo.webp" },
 ];
 
-export default function CountrySelector({
-  actual = "senegal",
-}: {
-  actual?: string;
-}) {
+export default function CountrySelector() {
   const [selectedCountry, setSelectedCountry] = useState<string>("senegal");
-  useEffect(() => {
-    setSelectedCountry(actual);
-  }, [actual]);
+  // useEffect(() => {
+  //   setSelectedCountry(actual);
+  // }, [actual]);
 
   return (
     <div className="bg-sky-50 py-3 border-b">
