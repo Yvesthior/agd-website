@@ -316,13 +316,13 @@ const countries: Record<string, CountryInfo> = {
   },
 };
 
-export default function CountryPage({
+export default async function CountryPage({
   params,
 }: {
   params: { country: string };
 }) {
-  const actualContry = params.country;
-  const countryInfo = countries[params.country];
+  const actualContry = await params.country;
+  const countryInfo = await countries[params.country];
 
   if (!countryInfo) {
     return (
