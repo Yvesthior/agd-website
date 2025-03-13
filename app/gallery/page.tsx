@@ -1,22 +1,28 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import HeroSlider from "@/components/hero-slider"
+import { useState } from "react";
+import Image from "next/image";
+import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import HeroSlider from "@/components/hero-slider";
 
-type GalleryCategory = "all" | "retreats" | "conferences" | "worship" | "evangelization" | "training"
+type GalleryCategory =
+  | "all"
+  | "retreats"
+  | "conferences"
+  | "worship"
+  | "evangelization"
+  | "training";
 
 type GalleryItem = {
-  id: string
-  title: string
-  description: string
-  date: string
-  country: string
-  category: GalleryCategory
-  image: string
-}
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  country: string;
+  category: GalleryCategory;
+  image: string;
+};
 
 const galleryItems: GalleryItem[] = [
   {
@@ -27,7 +33,7 @@ const galleryItems: GalleryItem[] = [
     date: "Mars 2024",
     country: "Sénégal",
     category: "retreats",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "2",
@@ -37,7 +43,7 @@ const galleryItems: GalleryItem[] = [
     date: "Février 2024",
     country: "Côte d'Ivoire",
     category: "conferences",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "3",
@@ -47,16 +53,17 @@ const galleryItems: GalleryItem[] = [
     date: "Janvier 2024",
     country: "France",
     category: "worship",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "4",
     title: "Mission d'évangélisation à Montréal",
-    description: "Mission d'évangélisation dans les rues de Montréal. Partage de l'Évangile et témoignages.",
+    description:
+      "Mission d'évangélisation dans les rues de Montréal. Partage de l'Évangile et témoignages.",
     date: "Décembre 2023",
     country: "Canada",
     category: "evangelization",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "5",
@@ -66,7 +73,7 @@ const galleryItems: GalleryItem[] = [
     date: "Novembre 2023",
     country: "Togo",
     category: "training",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "6",
@@ -76,7 +83,7 @@ const galleryItems: GalleryItem[] = [
     date: "Octobre 2023",
     country: "Sénégal",
     category: "retreats",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "7",
@@ -86,16 +93,17 @@ const galleryItems: GalleryItem[] = [
     date: "Septembre 2023",
     country: "Côte d'Ivoire",
     category: "conferences",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "8",
     title: "Veillée d'adoration à Lyon",
-    description: "Veillée d'adoration eucharistique à Lyon. Un temps fort de prière et d'intimité avec le Seigneur.",
+    description:
+      "Veillée d'adoration eucharistique à Lyon. Un temps fort de prière et d'intimité avec le Seigneur.",
     date: "Août 2023",
     country: "France",
     category: "worship",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "9",
@@ -105,7 +113,7 @@ const galleryItems: GalleryItem[] = [
     date: "Juillet 2023",
     country: "Canada",
     category: "evangelization",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "10",
@@ -115,16 +123,17 @@ const galleryItems: GalleryItem[] = [
     date: "Juin 2023",
     country: "Togo",
     category: "training",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "11",
     title: "Retraite de Pentecôte",
-    description: "Retraite de Pentecôte à Dakar. Un week-end pour se préparer à recevoir l'effusion de l'Esprit Saint.",
+    description:
+      "Retraite de Pentecôte à Dakar. Un week-end pour se préparer à recevoir l'effusion de l'Esprit Saint.",
     date: "Mai 2023",
     country: "Sénégal",
     category: "retreats",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "12",
@@ -134,23 +143,37 @@ const galleryItems: GalleryItem[] = [
     date: "Avril 2023",
     country: "Côte d'Ivoire",
     category: "conferences",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/gallery1.jpg",
   },
-]
+];
 
 const heroImages = [
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Galerie Génération David - Image 1" },
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Galerie Génération David - Image 2" },
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Galerie Génération David - Image 3" },
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Galerie Génération David - Image 4" },
-]
+  {
+    src: "/images/header1.jpg",
+    alt: "Galerie Génération David - Image 1",
+  },
+  {
+    src: "/images/header2.jpg",
+    alt: "Galerie Génération David - Image 2",
+  },
+  {
+    src: "/images/header3.jpg",
+    alt: "Galerie Génération David - Image 3",
+  },
+  {
+    src: "/images/header4.jpg",
+    alt: "Galerie Génération David - Image 4",
+  },
+];
 
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState<GalleryCategory>("all")
-  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null)
+  const [activeCategory, setActiveCategory] = useState<GalleryCategory>("all");
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
   const filteredItems =
-    activeCategory === "all" ? galleryItems : galleryItems.filter((item) => item.category === activeCategory)
+    activeCategory === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === activeCategory);
 
   const categories = [
     { id: "all", label: "Tous" },
@@ -159,7 +182,7 @@ export default function GalleryPage() {
     { id: "worship", label: "Louange" },
     { id: "evangelization", label: "Évangélisation" },
     { id: "training", label: "Formation" },
-  ]
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -180,7 +203,9 @@ export default function GalleryPage() {
               <Button
                 key={category.id}
                 variant={activeCategory === category.id ? "default" : "outline"}
-                onClick={() => setActiveCategory(category.id as GalleryCategory)}
+                onClick={() =>
+                  setActiveCategory(category.id as GalleryCategory)
+                }
                 className={`mb-2 ${
                   activeCategory === category.id
                     ? "bg-orange-500 hover:bg-orange-600"
@@ -221,7 +246,9 @@ export default function GalleryPage() {
           {/* Empty State */}
           {filteredItems.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-600">Aucune image trouvée pour cette catégorie.</p>
+              <p className="text-gray-600">
+                Aucune image trouvée pour cette catégorie.
+              </p>
             </div>
           )}
         </div>
@@ -246,7 +273,9 @@ export default function GalleryPage() {
               />
             </div>
             <div className="p-4 bg-white">
-              <h3 className="text-xl font-bold text-orange-500">{selectedImage.title}</h3>
+              <h3 className="text-xl font-bold text-orange-500">
+                {selectedImage.title}
+              </h3>
               <p className="text-sm text-gray-500 mb-2">
                 {selectedImage.date} - {selectedImage.country}
               </p>
@@ -256,6 +285,5 @@ export default function GalleryPage() {
         </div>
       )}
     </div>
-  )
+  );
 }
-

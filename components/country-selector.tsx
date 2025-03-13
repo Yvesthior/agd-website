@@ -1,27 +1,38 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { MapPin } from "lucide-react"
-import { cn } from "@/lib/utils"
-import Link from "next/link"
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { MapPin } from "lucide-react";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type Country = {
-  id: string
-  name: string
-  flag: string
-}
+  id: string;
+  name: string;
+  flag: string;
+};
 
 const countries: Country[] = [
-  { id: "senegal", name: "Sénégal", flag: "/placeholder.svg?height=24&width=36" },
-  { id: "cote-ivoire", name: "Côte d'Ivoire", flag: "/placeholder.svg?height=24&width=36" },
-  { id: "france", name: "France", flag: "/placeholder.svg?height=24&width=36" },
-  { id: "canada", name: "Canada", flag: "/placeholder.svg?height=24&width=36" },
-  { id: "togo", name: "Togo", flag: "/placeholder.svg?height=24&width=36" },
-]
+  { id: "senegal", name: "Sénégal", flag: "/images/drapeauSenegal.webp" },
+  {
+    id: "cote-ivoire",
+    name: "Côte d'Ivoire",
+    flag: "/images/drapeauCoteIvoire.svg",
+  },
+  { id: "france", name: "France", flag: "/images/drapeauFrance.webp" },
+  { id: "canada", name: "Canada", flag: "/images/drapeauCanada.webp" },
+  { id: "togo", name: "Togo", flag: "/images/drapeauTogo.webp" },
+];
 
-export default function CountrySelector() {
-  const [selectedCountry, setSelectedCountry] = useState<string>("senegal")
+export default function CountrySelector({
+  actual = "senegal",
+}: {
+  actual?: string;
+}) {
+  const [selectedCountry, setSelectedCountry] = useState<string>("senegal");
+  useEffect(() => {
+    setSelectedCountry(actual);
+  }, [actual]);
 
   return (
     <div className="bg-sky-50 py-3 border-b">
@@ -39,7 +50,9 @@ export default function CountrySelector() {
                 onClick={() => setSelectedCountry(country.id)}
                 className={cn(
                   "flex items-center space-x-2 py-1 px-2 rounded-md text-sm transition-colors",
-                  selectedCountry === country.id ? "bg-orange-100 text-orange-500" : "hover:bg-sky-100",
+                  selectedCountry === country.id
+                    ? "bg-orange-100 text-orange-500"
+                    : "hover:bg-sky-100"
                 )}
               >
                 <Image
@@ -56,6 +69,5 @@ export default function CountrySelector() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

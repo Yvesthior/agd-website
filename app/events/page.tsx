@@ -1,19 +1,19 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Calendar, Clock, MapPin, ArrowRight, Filter } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import HeroSlider from "@/components/hero-slider"
+import Image from "next/image";
+import Link from "next/link";
+import { Calendar, Clock, MapPin, ArrowRight, Filter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import HeroSlider from "@/components/hero-slider";
 
 type Event = {
-  id: string
-  title: string
-  date: string
-  time: string
-  location: string
-  country: string
-  description: string
-  image: string
-}
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  country: string;
+  description: string;
+  image: string;
+};
 
 const events: Event[] = [
   {
@@ -25,7 +25,7 @@ const events: Event[] = [
     country: "Sénégal",
     description:
       "Une retraite de trois jours pour approfondir votre relation avec Dieu, apprendre à prier et développer votre vie spirituelle. Au programme : enseignements, adoration, confession, accompagnement spirituel.",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "2",
@@ -36,7 +36,7 @@ const events: Event[] = [
     country: "Côte d'Ivoire",
     description:
       "Une conférence pour former les jeunes leaders chrétiens à impacter leur milieu socio-professionnel à la lumière de l'Évangile. Intervenants de qualité et ateliers pratiques.",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "3",
@@ -47,7 +47,7 @@ const events: Event[] = [
     country: "France",
     description:
       "Une soirée pour louer et adorer le Seigneur dans la puissance du Saint-Esprit. Venez vivre un temps fort de prière et d'intimité avec Dieu.",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "4",
@@ -58,7 +58,7 @@ const events: Event[] = [
     country: "Canada",
     description:
       "Une journée de formation pour apprendre à partager sa foi et à évangéliser efficacement. Techniques d'approche, réponses aux objections, témoignage personnel.",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "5",
@@ -69,7 +69,7 @@ const events: Event[] = [
     country: "Togo",
     description:
       "Une semaine de camp pour les jeunes de 15 à 25 ans. Au programme : formation, prière, sports, activités créatives, veillées et évangélisation.",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/gallery1.jpg",
   },
   {
     id: "6",
@@ -80,16 +80,28 @@ const events: Event[] = [
     country: "Sénégal",
     description:
       "Un pèlerinage pour les jeunes au sanctuaire marial de Popenguine. Marche, prière, messe, confession et temps de partage fraternel.",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/gallery1.jpg",
   },
-]
+];
 
 const heroImages = [
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Événements Génération David - Image 1" },
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Événements Génération David - Image 2" },
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Événements Génération David - Image 3" },
-  { src: "/placeholder.svg?height=600&width=1200", alt: "Événements Génération David - Image 4" },
-]
+  {
+    src: "/images/header2.jpg",
+    alt: "Événements Génération David - Image 1",
+  },
+  {
+    src: "/images/header2.jpg",
+    alt: "Événements Génération David - Image 2",
+  },
+  {
+    src: "/images/header2.jpg",
+    alt: "Événements Génération David - Image 3",
+  },
+  {
+    src: "/images/header2.jpg",
+    alt: "Événements Génération David - Image 4",
+  },
+];
 
 export default function EventsPage() {
   return (
@@ -106,7 +118,9 @@ export default function EventsPage() {
       <section className="w-full py-12 md:py-24 bg-white">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-            <h2 className="text-2xl font-bold text-orange-500">Tous les événements</h2>
+            <h2 className="text-2xl font-bold text-orange-500">
+              Tous les événements
+            </h2>
             <div className="mt-4 md:mt-0 flex items-center space-x-2">
               <Button
                 variant="outline"
@@ -125,13 +139,20 @@ export default function EventsPage() {
                 className="flex flex-col bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow h-full"
               >
                 <div className="relative h-48 w-full">
-                  <Image src={event.image || "/placeholder.svg"} alt={event.title} fill className="object-cover" />
+                  <Image
+                    src={event.image || "/placeholder.svg"}
+                    alt={event.title}
+                    fill
+                    className="object-cover"
+                  />
                   <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
                     {event.country}
                   </div>
                 </div>
                 <div className="flex flex-col p-6 flex-grow">
-                  <h3 className="text-xl font-bold mb-2 text-orange-500">{event.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-orange-500">
+                    {event.title}
+                  </h3>
                   <div className="space-y-2 mb-4 text-gray-600 text-sm">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-2 flex-shrink-0 text-orange-500" />
@@ -146,7 +167,9 @@ export default function EventsPage() {
                       <span>{event.location}</span>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{event.description}</p>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    {event.description}
+                  </p>
                   <div className="mt-auto">
                     <Link
                       href={`/events/${event.id}`}
@@ -161,7 +184,9 @@ export default function EventsPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">Vous ne trouvez pas l&apos;événement que vous cherchez ?</p>
+            <p className="text-gray-600 mb-4">
+              Vous ne trouvez pas l&apos;événement que vous cherchez ?
+            </p>
             <Button asChild className="bg-orange-500 hover:bg-orange-600">
               <Link href="/contact">Contactez-nous</Link>
             </Button>
@@ -169,6 +194,5 @@ export default function EventsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-
