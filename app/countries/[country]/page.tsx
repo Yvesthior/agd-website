@@ -321,8 +321,9 @@ export default async function CountryPage({
 }: {
   params: { country: string };
 }) {
-  const actualContry = await params.country;
-  const countryInfo = await countries[params.country];
+  const { country } = await params;
+  const actualContry = country;
+  const countryInfo = countries[actualContry];
 
   if (!countryInfo) {
     return (
